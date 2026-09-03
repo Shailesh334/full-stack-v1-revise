@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "A repo to help me revise basic building blocks of full stack web devlopment ( nodejs , jwt , sqlite , react)",
+  "description": "backend of a todo-app built using nodeJs , sqlite , express , jwt authentication",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "express": "^5.2.1",
