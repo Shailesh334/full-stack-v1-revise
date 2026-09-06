@@ -10,3 +10,13 @@ Content-Type: application/json
     "username" : "shailesh",
     "password" : "123123123"
 }
+
+
+### Login a user
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username" : "shailesh",
+    "password" : "12312313"
+}
