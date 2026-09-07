@@ -1,6 +1,18 @@
+import { useEffect } from "react"
+import { useNavigate } from "react-router"
 
 
-const Home = () => {
+const Home = ({token , setToken}) => {
+  const navigate = useNavigate()
+
+useEffect(()=>{
+  if (!token) {
+      navigate("/register");
+      return;
+    }
+}, [token , navigate])
+  
+  
   return (
     <div>
       Home 

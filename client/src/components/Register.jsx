@@ -1,7 +1,7 @@
 import { useState } from "react"
 import {useNavigate } from "react-router"
 
-const Register = () => {
+const Register = ({token , setToken}) => {
  
    const [form , setForm] = useState({
      username : "",
@@ -28,22 +28,28 @@ const Register = () => {
        })
  
        const data = await response.json()
- 
+       
+       if(data.message && data.message.startsWith("UNI")){
+        setError("User already exists")
+        return
+       }
        if(!response.ok) {
          setError(data.message);
          return;
        }
        
        localStorage.setItem('token' , data.token)
+       setToken(data.token)
        navigate('/')
        console.log(data)
  
      }catch(err){
-       setError(err)
+      console.log(err.message)
+       setError("Invalid username or password")
      }
    }
    return (
-     <div className="min-h-screen flex items-center justify-center ">
+     <div className="min-h-[80vh] flex items-center justify-center ">
        <form className="bg-white p-6 shadow-md rounded-lg" onSubmit={handleSubmit}>
  
          <h1 className="text-xl mb-4 ">Register</h1>

@@ -4,16 +4,20 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router , Route , Routes} from "react-router"
 
 import Register from "./components/Register";
+import { useState } from "react";
 
 const App = () => {
+
+  const [token , setToken] = useState( localStorage.getItem("token"))
+
   return (
   
     <Router>
-      <Navbar />
-      <Routes>
-          <Route path='/' element= {<Home />}></Route>
-          <Route path='/login' element= {<Login />}></Route>
-          <Route path='/register' element= {<Register />}></Route>
+      <Navbar token={token} setToken={setToken}/>
+      <Routes >
+          <Route path='/' element= {<Home token={token} setToken={setToken}/>}></Route>
+          <Route path='/login' element= {<Login token={token} setToken={setToken}/>}></Route>
+          <Route path='/register' element= {<Register token={token} setToken={setToken}/>}></Route>
       </Routes>
     </Router>
   

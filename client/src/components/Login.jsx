@@ -3,14 +3,14 @@ import { useNavigate } from "react-router"
 
 
 
-const Login = () => {
+const Login = ({token , setToken}) => {
 
   const [form , setForm] = useState({
     username : "",
     password : ""
   })
   const navigate =  useNavigate()
-  
+
   const [error , setError] = useState(null)
 
   const handleSubmit = async (e)=>{
@@ -36,16 +36,17 @@ const Login = () => {
       }
 
       localStorage.setItem('token' , data.token)
+      setToken(data.token)
        navigate('/')
-       console.log(data)
-      console.log(data)
+       
 
     }catch(err){
-      setError(err)
+      console.log(err.message)
+      setError("Invalid username or password")
     }
   }
   return (
-    <div className="min-h-screen flex items-center justify-center ">
+    <div className="min-h-[80vh] flex items-center justify-center ">
       <form className="bg-white p-6 shadow-md rounded-lg" onSubmit={handleSubmit}>
 
         <h1 className="text-xl mb-4 ">Login</h1>
