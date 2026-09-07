@@ -7,7 +7,7 @@ POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-    "username" : "shailesh",
+    "username" : "mangesh",
     "password" : "123123123"
 }
 
@@ -18,5 +18,12 @@ Content-Type: application/json
 
 {
     "username" : "shailesh",
-    "password" : "12312313"
+    "password" : "123123123"
 }
+
+
+### get all todos
+GET http://localhost:5000/todos
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzg4NzU5MDQ2LCJleHAiOjE3ODg4NDU0NDZ9.qrURmxP_sOBsw4w8m60LxymFlPQ-ZEO6MRunSpfTE1Y
+

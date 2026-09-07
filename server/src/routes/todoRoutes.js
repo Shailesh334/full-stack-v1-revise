@@ -5,7 +5,9 @@ const router = express.Router()
 
 
 // Get all todos
-router.get('/' , (req , res) => {})
+router.get('/' , (req , res) => {
+    console.log(req.userId)
+})
 
 // Create a new todo
 router.post('/' , (req , res) => {})
