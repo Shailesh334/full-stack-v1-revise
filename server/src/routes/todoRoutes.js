@@ -31,16 +31,41 @@ router.post("/", (req, res) => {
     const result = insertTodo.run(req.userId , task)
 
     res.json({id : result.lastInsertRowid , task , completed : 0})
-    
+
 });
 
-// Fetch a single todo
-router.post("/:id", (req, res) => {});
 
 // Update a  todo
-router.put("/:id", (req, res) => {});
+router.put("/:id", (req, res) => {
+    const {id} = req.params
+    const {completed} = req.body
+
+    const updateTodo = db.prepare(`
+        UPDATE todos SET completed = ? WHERE user_id = ? AND id = ? 
+    `)
+    
+    const result = updateTodo.run(completed , req.userId , id)
+
+     if (result.changes === 0) {
+        return res.status(404).json({
+            message: "Todo not found"
+        });
+    }    
+
+    res.json({message : "Todo updated"})
+});
 
 // Delete a todo
-router.delete("/:id", (req, res) => {});
+router.delete("/:id", (req, res) => {
+    const {id} = req.params
+
+    const deleteTodo = db.prepare(`
+        DELETE FROM todos WHERE id = ? 
+    `)
+
+    deleteTodo.run(id)
+
+    res.json({message : "Todo deleted"})
+});
 
 export default router;
