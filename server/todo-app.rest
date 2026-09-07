@@ -22,8 +22,17 @@ Content-Type: application/json
 }
 
 
-### get all todos
+### Get all todos
 GET http://localhost:5000/todos
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzg4NzU5NTA4LCJleHAiOjE3ODg4NDU5MDh9.K8Z37LP6haZVOsqMlaXbO6NrS9-1Q_oik50m6uTvIjY
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzg4NzYwNDE0LCJleHAiOjE3ODg4NDY4MTR9.bllwr3FyDG2wg1DmvOLngI4DxVkEn-z5a8HmFuOwax4
 
+
+### Insert a todo
+POST http://localhost:5000/todos
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzg4NzYwNDE0LCJleHAiOjE3ODg4NDY4MTR9.bllwr3FyDG2wg1DmvOLngI4DxVkEn-z5a8HmFuOwax4
+
+{
+    "task" : "Go to class"
+}
