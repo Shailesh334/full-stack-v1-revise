@@ -1,9 +1,38 @@
+import { useState } from "react"
 
 
 const Login = () => {
+
+  const [form , setForm] = useState({
+    username : "",
+    password : ""
+  })
+
+  const [error , setError] = useState(null)
+
+  const handleSubmit = ()=>{
+
+   
+    try{
+       console.log("handle submit called")
+    }catch(err){
+      setError(err.message)
+    }
+  }
   return (
-    <div>
-      Login
+    <div className="min-h-screen flex items-center justify-center ">
+      <form className="bg-white p-6 shadow-md rounded-lg" onSubmit={handleSubmit}>
+
+        <h1 className="text-xl mb-4 ">Login</h1>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+        <input type="username" placeholder="username" className="border w-full p-2 mb-3 rounded-md" value={form.username} onChange={(e) => setForm({
+          ...form , username : e.target.value
+        })}/>
+         <input type="password" placeholder="password" className="border w-full p-2 mb-3 rounded-md" value={form.password} onChange={(e) => setForm({
+          ...form , password : e.target.value
+        })}/>
+        <button className="bg-blue-500 text-white w-full border p-2 mb-3 rounded-md cursor-pointer">Submit</button>
+      </form>
     </div>
   )
 }
