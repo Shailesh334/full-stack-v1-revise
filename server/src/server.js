@@ -3,6 +3,8 @@ import authRoutes from './routes/authRoutes.js'
 import todoRoutes from './routes/todoRoutes.js'
 import "dotenv/config";
 import authMiddleware from "./middleware/authMiddleware.js";
+import cors from "cors"
+
 
 const app = express()
 
@@ -10,7 +12,7 @@ const app = express()
 const PORT = 5000 || process.env.PORT
 
 
-
+app.use(cors())
 app.use(express.json())
 
 app.use('/auth' , authRoutes)

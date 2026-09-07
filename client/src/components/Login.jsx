@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 
+
 const Login = () => {
 
   const [form , setForm] = useState({
@@ -10,13 +11,32 @@ const Login = () => {
 
   const [error , setError] = useState(null)
 
-  const handleSubmit = ()=>{
-
-   
+  const handleSubmit = async (e)=>{
+    e.preventDefault()
     try{
-       console.log("handle submit called")
+       
+      const response = await fetch("http://localhost:5000/auth/login" , {
+        method : "POST" ,
+        headers : {
+          "Content-Type" : "application/json"
+        },
+        body : JSON.stringify({
+          username : form.username ,
+          password : form.password
+        })
+      })
+
+      const data = await response.json()
+
+      if(!response.ok) {
+        setError(data.message);
+        return;
+      }
+
+      console.log(data)
+
     }catch(err){
-      setError(err.message)
+      setError(err)
     }
   }
   return (
