@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 
 
 
@@ -8,7 +9,8 @@ const Login = () => {
     username : "",
     password : ""
   })
-
+  const navigate =  useNavigate()
+  
   const [error , setError] = useState(null)
 
   const handleSubmit = async (e)=>{
@@ -33,6 +35,9 @@ const Login = () => {
         return;
       }
 
+      localStorage.setItem('token' , data.token)
+       navigate('/')
+       console.log(data)
       console.log(data)
 
     }catch(err){

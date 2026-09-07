@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import {useNavigate } from "react-router"
 
 const Register = () => {
  
@@ -7,7 +7,9 @@ const Register = () => {
      username : "",
      password : ""
    })
- 
+   
+   const navigate = useNavigate();
+
    const [error , setError] = useState(null)
  
    const handleSubmit = async (e)=>{
@@ -31,7 +33,9 @@ const Register = () => {
          setError(data.message);
          return;
        }
- 
+       
+       localStorage.setItem('token' , data.token)
+       navigate('/')
        console.log(data)
  
      }catch(err){
